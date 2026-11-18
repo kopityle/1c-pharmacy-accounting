@@ -10,12 +10,11 @@
 
 ```mermaid
 flowchart TD
-    %% Входные точки
-    SUPPLY[Поступление товаров<br/>(Склады, серии/сроки годности)] -->|Автоматически| INVENTORY[Справочник Номенклатура]
-    INVENTORY -->|Поиск аналогов| ANALOG[Подбор аналогов<br/>Полный/Частичный]
-    ANALOG -->|При наличии| PRESCRIP[Выписка рецепта<br/Врач + Пациент]
-    PRESCRIP -->|Рецепт валиден| SALES[Реализация товаров]
-    SALES -->|Списать остатки| WRITEOFF[Списание товаров<br/>Просрочка/Бой/Порча]
+    SUPPLY["Поступление товаров<br/>(Склады, серии/сроки годности)"] -->|Автоматически| INVENTORY["Справочник Номенклатура<br/>(МНН, ФармГруппы)"]
+    INVENTORY -->|Поиск аналогов| ANALOG["Подбор аналогов<br/>Полный / Частичный"]
+    ANALOG -->|При наличии| PRESCRIP["Выписка рецепта<br/>Врач + Пациент"]
+    PRESCRIP -->|Рецепт валид| SALES["Реализация товаров<br/>Розница / Опт"]
+    SALES -->|Списать остатки| WRITEOFF["Списание товаров<br/>Просрочка / Бой / Порча"]
     WRITEOFF -->|Обновление| INVENTORY
 
     style SUPPLY fill:#cfe2f3,stroke:#336699,stroke-width:2px
@@ -51,6 +50,7 @@ flowchart TD
    - Оба документа обновляют остатки на складах через регистры накопления
 
 ---
+<img width="1073" height="345" alt="image" src="https://github.com/user-attachments/assets/1de9951c-447f-4557-a358-c0e059c5606d" />
 
 ## Справочники и перечисления
 
@@ -66,6 +66,9 @@ flowchart TD
 | | ПричиныСписания | Просрочка, Боя, Порча |
 | | ТипыСкладов | ОсновнойСклад, ТорговыйЗал, ХолодильнаяКамера, Карантин |
 | | ТипыАналогов | Полный, Частичный |
+<img width="643" height="794" alt="image" src="https://github.com/user-attachments/assets/b241b63a-c121-4ad9-92cb-3c70ba8e9f35" />
+
+<img width="617" height="601" alt="image" src="https://github.com/user-attachments/assets/c15bd5a8-0bcb-450f-a427-476c1afc0416" />
 
 ---
 
@@ -85,6 +88,7 @@ flowchart TD
 Каждая роль определяется в отдельном файле `Roles/<Название>.xml` с указанием UUID и набора прав на объекты конфигурации.
 
 ---
+<img width="1227" height="662" alt="image" src="https://github.com/user-attachments/assets/5d31cc37-2d99-494a-a21c-2004e59f4ec7" />
 
 ## Технические детали
 
